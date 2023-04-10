@@ -3,6 +3,7 @@
 #####################################################
 
 using Base.Filesystem
+using Downloads
 
 # collect the keys from local database (MATRIXDICT or USERMATRIXDICT)
 # provide a numerical id counting from 1 for either database.
@@ -338,7 +339,7 @@ issvdok(::MatrixData) = false
 Copy file from remote or local url. Works around julia Downloads #69 and #36
 """
 function downloadfile(url::AbstractString, out::AbstractString)
-    run(downloadcommand(url, out))
+    Downloads.download(url, out)
     nothing
 end
 
